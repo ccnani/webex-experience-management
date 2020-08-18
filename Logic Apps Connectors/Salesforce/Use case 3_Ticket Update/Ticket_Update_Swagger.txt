@@ -4,7 +4,7 @@
         "actions": {
             "Condition": {
                 "actions": {
-                    "HTTP_2": {
+                    "Adding_the_note_to_response": {
                         "inputs": {
                             "authentication": {
                                 "password": "Login@123",
@@ -30,6 +30,12 @@
                                     "Closed"
                                 ]
                             }
+                        },
+                        {
+                            "equals": [
+                                "@triggerBody()?['Status']",
+                                "Closed"
+                            ]
                         }
                     ]
                 },
@@ -42,22 +48,6 @@
             },
             "Condition_2": {
                 "actions": {
-                    "Adding_the_note_to_response": {
-                        "inputs": {
-                            "authentication": {
-                                "password": "Login@123",
-                                "type": "Basic",
-                                "username": "ccnani"
-                            },
-                            "body": {
-                                "note": "Case Number:@{triggerBody()?['CaseNumber']} is Updated status: @{triggerBody()?['Status']}"
-                            },
-                            "method": "POST",
-                            "uri": "https://api.getcloudcherry.com/api/Answers/Note/@{triggerBody()?['WXM_Response_Id__c']}"
-                        },
-                        "runAfter": {},
-                        "type": "Http"
-                    },
                     "Append_to_string_variable": {
                         "inputs": {
                             "name": "SuveyLink",
@@ -111,11 +101,7 @@
                             "method": "POST",
                             "uri": "https://api.getcloudcherry.com/api/SurveyToken"
                         },
-                        "runAfter": {
-                            "Adding_the_note_to_response": [
-                                "Succeeded"
-                            ]
-                        },
+                        "runAfter": {},
                         "type": "Http"
                     },
                     "Parse_JSON": {
