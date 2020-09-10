@@ -7,9 +7,9 @@
                     "Adding_the_note_to_response": {
                         "inputs": {
                             "authentication": {
-                                "password": "Login@123",
+                                "password": "Pass WXM password",
                                 "type": "Basic",
-                                "username": "ccnani"
+                                "username": "Pass WXM UserName"
                             },
                             "body": {
                                 "note": "Case Number:@{triggerBody()?['CaseNumber']} is Updated status: @{triggerBody()?['Status']}"
